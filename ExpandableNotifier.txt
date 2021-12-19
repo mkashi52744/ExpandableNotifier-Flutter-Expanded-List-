@@ -1,0 +1,64 @@
+ExpandableNotifier(
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: ScrollOnExpand(
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: <Widget>[
+                  ExpandablePanel(
+                    theme: const ExpandableThemeData(
+                      headerAlignment: ExpandablePanelHeaderAlignment.center,
+                      tapBodyToExpand: true,
+                      tapBodyToCollapse: true,
+                      hasIcon: false,
+                    ),
+                    header: Container(
+                      color: Colors.white60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                this.faq.question,
+                                style: TextStyle(
+                                  fontSize: 14,fontWeight: FontWeight.bold
+                                )
+                              ),
+                            ),
+                            ExpandableIcon(
+                              theme: const ExpandableThemeData(
+                                expandIcon: Icons.arrow_right,
+                                collapseIcon: Icons.arrow_drop_down,
+                                iconColor: Colors.black,
+                                iconSize: 28.0,
+                                iconRotationAngle: 90,
+                                iconPadding: EdgeInsets.only(right: 5),
+                                hasIcon: false,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    collapsed: Container(),
+                    expanded: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10,left: 20,right: 20),
+                          child: Divider(thickness: 2,),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(15),
+                          child: Align(alignment: Alignment.centerLeft,
+                              child: Text(this.faq.answer)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ))
